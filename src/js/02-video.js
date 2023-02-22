@@ -7,24 +7,13 @@ const player = new Player(iframe);
 const STORAGE_KEY = 'videoplayer-current-time';
 
 function onSaveTimeupdate({ seconds } = 0) {
-  localStorage.setItem(STORAGE_KEY, seconds);
+  localStorage.setItem(STORAGE_KEY, Math.round(seconds));
 }
 
 function getVideoplayerCurrentTimeLS() {
   return localStorage.getItem(STORAGE_KEY);
 }
 
-player
-  .setCurrentTime(getVideoplayerCurrentTimeLS())
-  .then(function (seconds) {})
-  .catch(function (error) {
-    switch (error.name) {
-      case 'RangeError':
-        break;
-
-      default:
-        break;
-    }
-  });
+player.setCurrentTime(getVideoplayerCurrentTimeLS());
 
 player.on('timeupdate', throttle(onSaveTimeupdate, 1000));
