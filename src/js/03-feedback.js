@@ -14,7 +14,7 @@ const formData = {};
 // --------------------------FUNCTIONS-------------------------------------
 
 form.addEventListener('submit', onFromSubmit);
-textarea.addEventListener('input', throttle(onTextareaInput, 500));
+form.addEventListener('input', throttle(onTextareaInput, 500));
 
 function onFromSubmit(event) {
   event.preventDefault();
