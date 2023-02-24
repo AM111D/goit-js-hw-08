@@ -18,6 +18,11 @@ form.addEventListener('input', throttle(onTextareaInput, 500));
 
 function onFromSubmit(event) {
   event.preventDefault();
+
+  if (email.value === '' || message.value === '') {
+    return alert('Please, fill the form');
+  }
+
   event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
 }
